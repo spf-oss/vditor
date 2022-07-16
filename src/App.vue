@@ -1,27 +1,49 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div id="editor"></div>
+  <button @click="setValue">按钮</button>
+  <button @click="getHtml">获取html</button>
+  <button @click="setTheme1">获取html</button>
+  <button @click="setTheme2">获取html</button>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { defineComponent, ref, onMounted} from 'vue';
+import Vditor from 'vditor'
+import 'vditor/dist/index.css'
+
+var refEditor = ref<Vditor>();
 
 export default defineComponent({
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  setup() {
+    const setValue = ()=>{
+      refEditor.value?.insertValue("我仙子啊")
+    }
+
+    const getHtml = ()=>{
+      console.log(refEditor.value?.getHTML())
+    }
+
+    const setTheme1 = ()=>{
+      refEditor.value?.setTheme("classic")
+    }
+    const setTheme2 = ()=>{
+      refEditor.value?.setTheme("dark")
+    }
+
+    onMounted(() => {
+      refEditor.value = new Vditor("editor", {
+        height: 720,
+      });
+    })
+
+    return {
+      refEditor,
+      setValue,
+      getHtml,
+      setTheme1,
+      setTheme2
+    }
+  },
 });
 </script>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
