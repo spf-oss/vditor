@@ -2,8 +2,8 @@
   <div id="editor"></div>
   <button @click="setValue">按钮</button>
   <button @click="getHtml">获取html</button>
-  <button @click="setTheme1">获取html</button>
-  <button @click="setTheme2">获取html</button>
+  <button @click="setTheme1">白色主题</button>
+  <button @click="setTheme2">黑色主题</button>
 </template>
 
 <script lang="ts">
@@ -17,7 +17,7 @@ export default defineComponent({
   name: 'App',
   setup() {
     const setValue = ()=>{
-      refEditor.value?.insertValue("我仙子啊")
+      refEditor.value?.insertValue("我是插入的文本")
     }
 
     const getHtml = ()=>{
