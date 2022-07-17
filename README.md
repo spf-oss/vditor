@@ -28,7 +28,4 @@ npm run lint
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-
-```
-var a = ""
-```
+MarkDown编辑器在Vue中的运行用
